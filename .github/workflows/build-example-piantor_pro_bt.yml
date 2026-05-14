@@ -1,7 +1,7 @@
 # Copyright 2023 Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
-name: 'Build Example Piantor Pro BT left'
+name: 'Build Example Piantor Pro BT'
 on: workflow_dispatch
 jobs:
   build_left:
@@ -12,5 +12,16 @@ jobs:
         "piantor_pro_bt_left"
       ]'
       #shield: '["nice_view"]'
+      alphas: "QWERTY"
       snippet: '["studio-rpc-usb-uart"]'
       cmake_args: '["-DCONFIG_ZMK_STUDIO=y"]'
+  build_right:
+    uses: ./.github/workflows/main.yml
+    secrets: inherit
+    with:
+      board: '[
+        "piantor_pro_bt_right"
+      ]'
+      #shield: '["nice_view"]'
+      alphas: "QWERTY"
+      snippet: '["studio-rpc-usb-uart"]'
