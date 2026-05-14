@@ -11,6 +11,6 @@ jobs:
       board: '[
         "piantor_pro_bt_left"
       ]'
-      shield: '["nice_view"]'
+      #shield: '["nice_view"]'
       snippet: '["studio-rpc-usb-uart"]'
       cmake_args: '["-DCONFIG_ZMK_STUDIO=y"]'
