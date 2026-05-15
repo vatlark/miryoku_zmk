@@ -4,7 +4,7 @@
 name: 'Build Example Piantor Pro BT'
 on: workflow_dispatch
 jobs:
-  build:
+  build_left:
     uses: ./.github/workflows/main.yml
     secrets: inherit
     with:
@@ -18,7 +18,7 @@ jobs:
       snippet: '["studio-rpc-usb-uart"]'
       # cmake_args: '["-DCONFIG_ZMK_STUDIO=y"]'
       kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_STUDIO=y"]'
-      modules: '["zzeneg/zmk-raw-hid/main srwi/zmk-keypeek-layer-notifier/master"]'
+      modules: '["srwi/zmk-keypeek-layer-notifier/master"]' #zzeneg/zmk-raw-hid/main
   build_right:
     uses: ./.github/workflows/main.yml
     secrets: inherit
@@ -33,3 +33,13 @@ jobs:
       snippet: '["studio-rpc-usb-uart"]'
       kconfig: '["CONFIG_ZMK_POINTING=y"]'
       # modules: '["zzeneg/zmk-raw-hid/main srwi/zmk-keypeek-layer-notifier/master"]'
+  # build_reset:
+  #   uses: ./.github/workflows/main.yml
+  #   secrets: inherit
+  #   with:
+  #     board: '[
+  #       "piantor_pro_bt_left", 
+  #       "piantor_pro_bt_right"
+  #     ]'
+  #     shield: '["settings_reset"]' #nice_view doesnt work
+  #     snippet: '["studio-rpc-usb-uart"]'
