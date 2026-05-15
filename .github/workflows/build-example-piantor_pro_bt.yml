@@ -21,7 +21,7 @@ jobs:
       # kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_STUDIO=y\n# enable Raw HID module\nCONFIG_RAW_HID=y\n# add additional USB HID device\nCONFIG_USB_HID_DEVICE_COUNT=2"]'
       kconfig: '["CONFIG_ZMK_POINTING=y\nCONFIG_ZMK_STUDIO=y\n"]'
 
-      modules: '["zzeneg/zmk-raw-hid/main srwi/zmk-keypeek-layer-notifier/master"]' #zzeneg/zmk-raw-hid/main
+      modules: '["srwi/zmk-keypeek-layer-notifier/master"]' #zzeneg/zmk-raw-hid/main
 
   build_right:
     uses: ./.github/workflows/main.yml
