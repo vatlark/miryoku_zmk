@@ -11,7 +11,7 @@ jobs:
       board: '[
         "piantor_pro_bt_left"
       ]'
-      # shield: '["raw_hid_adapter"]' #nice_view doesnt work
+      shield: '["raw_hid_adapter"]' #nice_view doesnt work
       alphas: '["QWERTY"]'
       extra: '["COLEMAKDH"]'
       tap: '["QWERTY"]'
