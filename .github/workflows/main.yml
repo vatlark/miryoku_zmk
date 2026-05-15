@@ -47,9 +47,6 @@ on:
       snippet:
         type: string
         default: '["default"]'
-      cmake_args:
-        type: string
-        default: '["default"]'
   
 
 jobs:
@@ -74,7 +71,6 @@ jobs:
         branches: ${{ fromJSON(inputs.branches) }}
         modules: ${{ fromJSON(inputs.modules) }}
         snippet: ${{ fromJSON(inputs.snippet) }}
-        cmake_args: ${{ fromJSON(inputs.cmake_args) }}
     env:
       MIRYOKU_DEBUG: ${{ secrets.MIRYOKU_DEBUG }}
     steps:
@@ -174,10 +170,6 @@ jobs:
           then
             run_name="$run_name snippet_"`echo "${{ matrix.snippet }}" | md5sum | head -c "$hash_length"`
           fi
-          if [ -n "${{ matrix.cmake_args }}" -a "${{ matrix.cmake_args }}" != 'default' ]
-          then
-            run_name="$run_name cmake_"`echo "${{ matrix.cmake_args }}" | md5sum | head -c "$hash_length"`
-          fi
 
           run_name=`echo $run_name | tr ' ' '-'`
           echo "run_name=$run_name" >> $GITHUB_OUTPUT
@@ -201,7 +193,6 @@ jobs:
           branches: '${{ matrix.branches }}'  
           modules: '${{ matrix.modules }}'
           snippet: '${{ matrix.snippet }}'
-          cmake_args: '${{ matrix.cmake_args }}'
           " > "$matrix_file"
           cat "$matrix_file"
           echo "::endgroup::"
@@ -352,7 +343,7 @@ jobs:
           EX_DATAERR='65'
           cd "${GITHUB_WORKSPACE}/zmk/app"
           {
-            west $west_debug build -b ${{ matrix.board }} $west_build_debug ${{ steps.main.outputs.snippet_arg }} -- ${{ steps.main.outputs.shield_arg }} ${{ steps.main.outputs.modules_arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/miryoku_zmk/config" ${{ matrix.cmake_args }} ||
+            west $west_debug build -b ${{ matrix.board }} $west_build_debug ${{ steps.main.outputs.snippet_arg }} -- ${{ steps.main.outputs.shield_arg }} ${{ steps.main.outputs.modules_arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/miryoku_zmk/config" ||
             echo "$build_failed_message $?." ;
           } 2>&1 | tee "$log"
           if grep -q 'Invalid BOARD; see above.' "$log"
