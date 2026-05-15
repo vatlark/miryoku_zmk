@@ -1,8 +1,8 @@
 // Copyright 2026 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
-#this has no keymap but the build system wants this file to exist
+// this has no keymap but the build system wants this file to exist
 
 #include "../miryoku/custom_config.h"
-#include "../miryoku/mapping/42/corne.h" # i should probably delete this
+#include "../miryoku/mapping/42/corne.h"  //i should probably delete this
 #include "../miryoku/miryoku.dtsi"
