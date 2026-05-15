@@ -11,11 +11,14 @@ jobs:
       board: '[
         "piantor_pro_bt_left"
       ]'
-      #shield: '["nice_view"]'
+      shield: '["raw_hid_adapter"]' #nice_view doesnt work
       alphas: '["QWERTY"]'
+      extra: '["COLEMAKDH"]'
+      tap: '["QWERTY"]'
       snippet: '["studio-rpc-usb-uart"]'
       cmake_args: '["-DCONFIG_ZMK_STUDIO=y"]'
       kconfig: '["CONFIG_ZMK_POINTING=y"]'
+      modules: '["zzeneg/zmk-raw-hid/main" "srwi/zmk-keypeek-layer-notifier/master"]'
   build_right:
     uses: ./.github/workflows/main.yml
     secrets: inherit
@@ -23,7 +26,10 @@ jobs:
       board: '[
         "piantor_pro_bt_right"
       ]'
-      #shield: '["nice_view"]'
+      shield: '["raw_hid_adapter"]' #nice_view doesnt work
       alphas: '["QWERTY"]'
+      extra: '["COLEMAKDH"]'
+      tap: '["QWERTY"]'
       snippet: '["studio-rpc-usb-uart"]'
       kconfig: '["CONFIG_ZMK_POINTING=y"]'
+      modules: '["zzeneg/zmk-raw-hid/main" "srwi/zmk-keypeek-layer-notifier/master"]'
